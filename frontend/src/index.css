@@ -1,0 +1,489 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+@plugin "flowbite/plugin";
+
+/* ── CSS Variables ─────────────────────────────────────── */
+:root {
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: 'Playfair Display', Georgia, serif;
+
+  --color-black: #0a0a0a;
+  --color-white: #ffffff;
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #e8e8e8;
+  --color-gray-400: #9e9e9e;
+  --color-gray-600: #5a5a5a;
+  --color-gray-800: #2a2a2a;
+  --color-accent: #7c3aed;
+  --color-accent-light: #ede9fe;
+  --color-accent-dark: #5b21b6;
+  --color-success: #16a34a;
+  --color-error: #dc2626;
+  --color-sale: #e11d48;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.08);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.10);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,.14);
+  --shadow-hover: 0 8px 32px rgba(0,0,0,.18);
+
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+
+  font-family: var(--font-body);
+  background-color: var(--color-white);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Tailwind Theme ────────────────────────────────────── */
+@theme {
+  --color-primary-50: #f5f3ff;
+  --color-primary-100: #ede9fe;
+  --color-primary-200: #ddd6fe;
+  --color-primary-300: #c4b5fd;
+  --color-primary-400: #a78bfa;
+  --color-primary-500: #8b5cf6;
+  --color-primary-600: #7c3aed;
+  --color-primary-700: #6d28d9;
+  --color-primary-800: #5b21b6;
+  --color-primary-900: #4c1d95;
+  --color-primary-950: #2e1065;
+}
+
+/* ── Base Reset ────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { overflow-x: hidden; }
+body { overflow-x: hidden; background-color: #ffffff; }
+
+img { display: block; max-width: 100%; }
+
+/* ── Custom Scrollbar ──────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #c4b5fd; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #7c3aed; }
+
+/* ── Typography ────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+  color: var(--color-black);
+  line-height: 1.2;
+}
+
+/* ── Animations ────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes shimmer {
+  0%   { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+@keyframes pulse-ring {
+  0%   { transform: scale(1);   opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+@keyframes bounceIn {
+  0%   { transform: scale(0.3); opacity: 0; }
+  50%  { transform: scale(1.08); }
+  70%  { transform: scale(0.95); }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes ripple {
+  to { transform: scale(4); opacity: 0; }
+}
+@keyframes slideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+@keyframes wordReveal {
+  from { opacity: 0; transform: translateY(20px) rotateX(-15deg); }
+  to   { opacity: 1; transform: translateY(0) rotateX(0); }
+}
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes borderGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(124,58,237,0.4); }
+  50%       { box-shadow: 0 0 0 8px rgba(124,58,237,0); }
+}
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ── Animation Utility Classes ─────────────────────────── */
+.animate-fade-in       { animation: fadeIn 0.5s ease both; }
+.animate-fade-in-up    { animation: fadeInUp 0.55s ease both; }
+.animate-fade-in-down  { animation: fadeInDown 0.45s ease both; }
+.animate-slide-in-left { animation: slideInLeft 0.5s ease both; }
+.animate-slide-in-right{ animation: slideInRight 0.5s ease both; }
+.animate-scale-in      { animation: scaleIn 0.4s ease both; }
+.animate-slide-up      { animation: slideUp 0.4s cubic-bezier(.16,1,.3,1) both; }
+.animate-bounce-in     { animation: bounceIn 0.6s cubic-bezier(.28,.84,.42,1) both; }
+
+/* Stagger delays */
+.delay-100 { animation-delay: 0.1s; }
+.delay-150 { animation-delay: 0.15s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+
+/* ── Skeleton Loader ───────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: var(--radius-md);
+}
+
+/* ── Shopify-style Button ──────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: white;
+  background-color: var(--color-black);
+  border: 2px solid var(--color-black);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition-base), color var(--transition-base), transform var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.btn-primary:hover {
+  background-color: var(--color-gray-800);
+  transform: translateY(-1px);
+}
+.btn-primary:active { transform: translateY(0); }
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-black);
+  background-color: transparent;
+  border: 2px solid var(--color-black);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+.btn-outline:hover {
+  background-color: var(--color-black);
+  color: white;
+}
+
+.btn-accent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: white;
+  background-color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+.btn-accent:hover {
+  background-color: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
+  transform: translateY(-1px);
+}
+
+/* ── Ripple Effect ─────────────────────────────────────── */
+.ripple-btn { position: relative; overflow: hidden; }
+.ripple-btn .ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  pointer-events: none;
+  animation: ripple 600ms ease-out forwards;
+}
+
+/* ── Shopify-style Product Card ────────────────────────── */
+.product-card {
+  position: relative;
+  background: white;
+  border-radius: 0;
+  overflow: hidden;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+.product-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.product-card .card-image { overflow: hidden; background: var(--color-gray-100); }
+.product-card .card-image img { transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.product-card:hover .card-image img { transform: scale(1.07); }
+.product-card .quick-add {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(10,10,10,0.92);
+  color: white;
+  padding: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.16,1,.3,1);
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+}
+.product-card:hover .quick-add { transform: translateY(0); }
+
+/* ── Section Heading Shopify Style ─────────────────────── */
+.section-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-black);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+.section-subheading {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-gray-600);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+/* ── Input Shopify Style ───────────────────────────────── */
+.input-shopify {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid var(--color-gray-200);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--color-black);
+  background: white;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+  outline: none;
+}
+.input-shopify:focus {
+  border-color: var(--color-black);
+  box-shadow: 0 0 0 3px rgba(10,10,10,0.08);
+}
+.input-shopify::placeholder { color: var(--color-gray-400); }
+
+/* ── Badge ─────────────────────────────────────────────── */
+.badge-sale {
+  display: inline-block;
+  background: var(--color-sale);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+}
+.badge-new {
+  display: inline-block;
+  background: var(--color-black);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Nav Link Hover ────────────────────────────────────── */
+.nav-link {
+  position: relative;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: white;
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -4px;
+  height: 2px;
+  background: white;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-base);
+}
+.nav-link:hover::after,
+.nav-link.active::after { transform: scaleX(1); }
+
+/* ── Intersection Observer Reveal ──────────────────────── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left { opacity: 0; transform: translateX(-24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-right { opacity: 0; transform: translateX(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+/* ── Announcement Bar ──────────────────────────────────── */
+.announcement-bar {
+  background: var(--color-black);
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-align: center;
+  padding: 9px 16px;
+}
+
+/* ── Glassmorphism Card ────────────────────────────────── */
+.glass-card {
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: var(--radius-lg);
+}
+
+/* ── Gradient Text ─────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #7c3aed, #db2777, #f59e0b);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 4s ease infinite;
+}
+
+/* ── Section Divider ───────────────────────────────────── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gray-200), transparent);
+  margin: 48px 0;
+}
+
+/* ── Floating Label ────────────────────────────────────── */
+.float-label-wrap { position: relative; }
+.float-label-wrap input {
+  padding: 20px 16px 8px;
+  border: 1.5px solid var(--color-gray-200);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  color: var(--color-black);
+  background: white;
+  width: 100%;
+  transition: border-color var(--transition-base);
+  outline: none;
+}
+.float-label-wrap input:focus { border-color: var(--color-black); }
+.float-label-wrap label {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: var(--color-gray-400);
+  pointer-events: none;
+  transition: all var(--transition-base);
+}
+.float-label-wrap input:focus + label,
+.float-label-wrap input:not(:placeholder-shown) + label {
+  top: 10px;
+  transform: none;
+  font-size: 11px;
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+/* ── Page Transitions ──────────────────────────────────── */
+.page-enter { animation: fadeIn 0.35s ease both; }
+
+/* ── Mobile Touch Friendly ─────────────────────────────── */
+@media (max-width: 768px) {
+  .btn-primary, .btn-outline, .btn-accent { min-height: 48px; width: 100%; }
+  .product-card .quick-add { transform: translateY(0); background: rgba(10,10,10,0.85); }
+}
+
+/* ── Smooth Progress Bar ───────────────────────────────── */
+.progress-bar {
+  height: 3px;
+  background: var(--color-accent);
+  transition: width 0.4s ease;
+}
+
+/* ── Star Rating ───────────────────────────────────────── */
+.star-rating { display: flex; gap: 2px; }
+.star-rating .star { color: #fbbf24; font-size: 13px; }
+.star-rating .star-empty { color: #e5e7eb; }
+
+/* ── Quantity Stepper ──────────────────────────────────── */
+.qty-stepper { display: flex; align-items: center; border: 1.5px solid var(--color-gray-200); border-radius: var(--radius-sm); overflow: hidden; }
+.qty-stepper button {
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  background: var(--color-gray-50);
+  border: none;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+.qty-stepper button:hover { background: var(--color-gray-200); }
+.qty-stepper span { min-width: 40px; text-align: center; font-weight: 600; font-size: 14px; }
+
+/* ── Toast Override ────────────────────────────────────── */
+.Toastify__toast { border-radius: var(--radius-md) !important; font-family: var(--font-body) !important; }
