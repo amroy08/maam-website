@@ -4,7 +4,17 @@ const app = express();
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const connectDatabase = require("./Db/Database");
 
+// Ensure DB is connected for serverless invocations
+app.use(async (req, res, next) => {
+    try {
+        await connectDatabase();
+        next();
+    } catch (err) {
+        next(err);
+    }
+});
 
 app.use(express.json());
 app.use(cookieParser());
