@@ -1,79 +1,57 @@
 {
   "version": 2,
-  "framework": null,
-  "builds": [
+  "rewrites": [
     {
-      "src": "api/index.js",
-      "use": "@vercel/node"
+      "source": "/api/(.*)",
+      "destination": "/backend/index.js"
     },
     {
-      "src": "frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/index.js"
+      "source": "/user/(.*)",
+      "destination": "/backend/index.js"
     },
     {
-      "src": "/user/(.*)",
-      "dest": "/api/index.js"
+      "source": "/shop/(.*)",
+      "destination": "/backend/index.js"
     },
     {
-      "src": "/shop/(.*)",
-      "dest": "/api/index.js"
+      "source": "/product/(.*)",
+      "destination": "/backend/index.js"
     },
     {
-      "src": "/product/(.*)",
-      "dest": "/api/index.js"
+      "source": "/event/(.*)",
+      "destination": "/backend/index.js"
     },
     {
-      "src": "/event/(.*)",
-      "dest": "/api/index.js"
+      "source": "/coupon/(.*)",
+      "destination": "/backend/index.js"
     },
     {
-      "src": "/coupon/(.*)",
-      "dest": "/api/index.js"
+      "source": "/payment/(.*)",
+      "destination": "/backend/index.js"
     },
     {
-      "src": "/payment/(.*)",
-      "dest": "/api/index.js"
+      "source": "/order/(.*)",
+      "destination": "/backend/index.js"
     },
     {
-      "src": "/order/(.*)",
-      "dest": "/api/index.js"
+      "source": "/conversation/(.*)",
+      "destination": "/backend/index.js"
     },
     {
-      "src": "/conversation/(.*)",
-      "dest": "/api/index.js"
+      "source": "/message/(.*)",
+      "destination": "/backend/index.js"
     },
     {
-      "src": "/message/(.*)",
-      "dest": "/api/index.js"
+      "source": "/withdraw/(.*)",
+      "destination": "/backend/index.js"
     },
     {
-      "src": "/withdraw/(.*)",
-      "dest": "/api/index.js"
+      "source": "/category/(.*)",
+      "destination": "/backend/index.js"
     },
     {
-      "src": "/category/(.*)",
-      "dest": "/api/index.js"
-    },
-    {
-      "src": "/hero-slide/(.*)",
-      "dest": "/api/index.js"
-    },
-    {
-      "src": "/assets/(.*)",
-      "dest": "/frontend/dist/assets/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/frontend/dist/$1"
+      "source": "/hero-slide/(.*)",
+      "destination": "/backend/index.js"
     }
   ]
 }
