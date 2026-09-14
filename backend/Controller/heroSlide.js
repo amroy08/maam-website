@@ -6,7 +6,7 @@ const { isAuthenticated, isAdmin } = require("../Middleware/auth");
 const ErrorHandler = require("../Utils/ErrorHandler");
 const catchAsyncErrors = require("../Middleware/catchAsyncErrors");
 const fs = require("fs");
-const { uploadToR2, deleteFromR2 } = require("../utils/r2");
+const { uploadToR2, deleteFromR2 } = require("../Utils/r2");
 
 // Create slide (Admin only)
 router.post(

@@ -9,7 +9,7 @@ const jwt = require("jsonwebtoken");
 const sendMail = require("../Utils/sendMail");
 const sendToken = require("../Utils/sendToken");
 const {isAuthenticated, isAdmin} = require("../Middleware/auth");
-const { uploadToR2, deleteFromR2 } = require("../utils/r2");
+const { uploadToR2, deleteFromR2 } = require("../Utils/r2");
 
 // Create and activate user
 router.post("/create-user", upload.single("avatar"), async (req, res, next) => {

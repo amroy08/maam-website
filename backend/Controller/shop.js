@@ -9,7 +9,7 @@ const catchAsyncErrors = require("../Middleware/catchAsyncErrors");
 const sendMail = require("../Utils/sendMail");
 const sendShopToken = require("../Utils/shopToken");
 const {isShop, isAuthenticated, isAdmin} = require("../Middleware/auth");
-const { uploadToR2, deleteFromR2 } = require("../utils/r2");
+const { uploadToR2, deleteFromR2 } = require("../Utils/r2");
 
 // create shop
 router.post("/create-shop", upload.single("avatar"), async (req, res, next) => {

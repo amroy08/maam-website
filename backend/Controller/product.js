@@ -8,7 +8,7 @@ const Order = require("../Model/order");
 const ErrorHandler = require("../Utils/ErrorHandler");
 const upload = require("../multer");
 const fs = require("fs");
-const { uploadToR2, deleteFromR2 } = require("../utils/r2");
+const { uploadToR2, deleteFromR2 } = require("../Utils/r2");
 
 // create product — admin only, auto-injects the store's shopId
 router.post(

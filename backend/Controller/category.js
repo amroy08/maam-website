@@ -5,7 +5,7 @@ const catchAsyncErrors = require("../Middleware/catchAsyncErrors");
 const ErrorHandler = require("../Utils/ErrorHandler");
 const upload = require("../multer");
 const fs = require("fs");
-const { uploadToR2, deleteFromR2 } = require("../utils/r2");
+const { uploadToR2, deleteFromR2 } = require("../Utils/r2");
 const router = express.Router();
 
 // create category
